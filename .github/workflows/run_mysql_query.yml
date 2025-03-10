@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - "query_mysql.sh"  # Run only when script changes
+      - "query-script/query_mysql.sh"  # Run only when script changes
 
 jobs:
   run-mysql-query:
