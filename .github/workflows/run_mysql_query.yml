@@ -1,0 +1,41 @@
+name: Execute MySQL Query via AWS Secrets
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "query_mysql.sh"  # Run only when script changes
+
+jobs:
+  run-mysql-query:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Fetch MySQL Credentials from AWS Secrets Manager
+        run: |
+          SECRET_JSON=$(aws secretsmanager get-secret-value --secret-id test --query SecretString --output text)
+          echo "MYSQL_USER=$(echo $SECRET_JSON | jq -r .username)" >> $GITHUB_ENV
+          echo "MYSQL_PASS=$(echo $SECRET_JSON | jq -r .password)" >> $GITHUB_ENV
+          echo "MYSQL_HOST=$(echo $SECRET_JSON | jq -r .host)" >> $GITHUB_ENV
+          echo "MYSQL_PORT=$(echo $SECRET_JSON | jq -r .port)" >> $GITHUB_ENV
+          echo "MYSQL_DB=$(echo $SECRET_JSON | jq -r .dbname)" >> $GITHUB_ENV
+
+      - name: Install MySQL Client
+        run: sudo apt-get install -y mysql-client
+
+      - name: Make Script Executable
+        run: chmod +x query_mysql.sh
+
+      - name: Run MySQL Query Script
+        run: ./query_mysql.sh
