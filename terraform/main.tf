@@ -32,6 +32,7 @@ resource "aws_instance" "mysql_server" {
   vpc_security_group_ids = [aws_security_group.mysql_sg.id]
   iam_instance_profile   = aws_iam_instance_profile.ssm_instance_profile.name
   associate_public_ip_address = true
+  user_data = file("setup-sql.sh")
 }
 
 resource "aws_iam_role" "ssm_role" {
