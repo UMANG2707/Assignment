@@ -6,7 +6,7 @@ AWS_REGION="us-east-1"  # Change to your AWS region
 
 # Retrieve the secret
 SECRET_JSON=$(aws secretsmanager get-secret-value --secret-id "$SECRET_NAME" --query SecretString --output text)
-# Extract MySQL credentials using jq
+
 MYSQL_HOST=$(echo "$SECRET_JSON" | jq -r '.host')
 MYSQL_PORT=$(echo "$SECRET_JSON" | jq -r '.port')
 MYSQL_USER=$(echo "$SECRET_JSON" | jq -r '.username')
