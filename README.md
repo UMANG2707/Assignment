@@ -58,15 +58,15 @@ Host test-ec2
 
 ✅ We have two ways to install MySQL on the instance:
 
-    - Manual Setup After Launch:
+- Manual Setup After Launch:
 
-    - SSH into the instance and manually install MySQL.
+- SSH into the instance and manually install MySQL.
 
 ✅ Configure MySQL settings as required.
 
-    - Automated Setup via User Data:
+- Automated Setup via User Data:
 
-    - A script (install_mysql.sh) is included in the Terraform user data to automate MySQL installation and configuration.
+- A script (install_mysql.sh) is included in the Terraform user data to automate MySQL installation and configuration.
 
 ✅ This script ensures that MySQL is ready to use immediately after the instance is provisioned.
 
@@ -91,13 +91,11 @@ Host test-ec2
 
 ✅ The Employees Sample Database is set up using SQL scripts. These steps have been added to the user data script to ensure the database is automatically created and loaded with sample data during instance setup.
 
-    ```
     wget https://github.com/datacharmer/test_db/archive/refs/heads/master.zip -O employees-db.zip
     sudo apt install -y unzip
     unzip employees-db.zip
     cd test_db-master
     mysql -h <HOST_NAME> -P 3307 -u <user> -p <password> < employees.sql
-    ```
 
 ## Step-7: Install MySQL Workbench on your local machine and establish a connection to MySQL on port 3307.
 
@@ -139,12 +137,11 @@ Host test-ec2
 
 - 📂 Repository Structure:
 
-    ```
     .github/workflows/
     terraform                  
     query-script             
     README.md                 
-    ```
+
 ## Step-11: Create a pipeline which will run your script on merge to master or main branch.
 
 - A GitHub Actions pipeline has been created to automatically run the MySQL query script (query_mysql.sh) whenever changes are merged into the main branch.
