@@ -3,7 +3,6 @@
 # Fetch MySQL credentials from AWS Secrets Manager
 SECRET_NAME="test"  # Change to your actual secret name
 AWS_REGION="us-east-1"  # Change to your AWS region
-
 # Retrieve the secret
 SECRET_JSON=$(aws secretsmanager get-secret-value --secret-id "$SECRET_NAME" --query SecretString --output text)
 
