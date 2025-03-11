@@ -40,7 +40,7 @@ terraform/
 
 ✅ The Terraform script configures a security group that only allows SSH access from your IP.
 
-    ![alt text](image.png)
+![alt text](images/image.png)
 
 ✅ Ensure your IP is correctly set in main.tf before applying Terraform.
 
