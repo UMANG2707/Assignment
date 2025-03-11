@@ -179,3 +179,9 @@ Stores them in environment variables.
 Uses these credentials to connect to MySQL and execute queries.
 
  ![alt text](images/image-3.png) 
+
+----
+
+### Challenge 2: Number Printing Script
+
+The Python script for Challenge 2 is located at `challenge2/number.py`. This script prints numbers from 1 to 100, replacing multiples of 3 with "Black", multiples of 5 with "Red", and multiples of both 3 and 5 with "BlackRed", as described in the challenge definition.
