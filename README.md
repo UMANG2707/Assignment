@@ -7,6 +7,8 @@ This task involves provisioning an EC2 server, installing an SQL server on it, a
 This repository contains infrastructure and scripts for managing MySQL databases using Terraform and shell scripts.
 
 ```
+│── .github/workflows/
+│ │── run_mysql_query.yml
 │── query-script/ 
 │ ├── query_mysql.sh # Script to run MySQL queries 
 │── terraform/ 
