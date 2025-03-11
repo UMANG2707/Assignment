@@ -56,17 +56,17 @@ Host test-ec2
 
 ## Step-3: Install MySQL on the EC2 instance.
 
-✅We have two ways to install MySQL on the instance:
+✅ We have two ways to install MySQL on the instance:
 
-    1. Manual Setup After Launch:
+    - Manual Setup After Launch:
 
-    2. SSH into the instance and manually install MySQL.
+    - SSH into the instance and manually install MySQL.
 
 ✅ Configure MySQL settings as required.
 
-    1. Automated Setup via User Data:
+    - Automated Setup via User Data:
 
-    2. A script (install_mysql.sh) is included in the Terraform user data to automate MySQL installation and configuration.
+    - A script (install_mysql.sh) is included in the Terraform user data to automate MySQL installation and configuration.
 
 ✅ This script ensures that MySQL is ready to use immediately after the instance is provisioned.
 
@@ -76,9 +76,7 @@ Host test-ec2
 
     ```
     sudo sed -i 's/^#\s*port\s*=.*/port = 3307/' /etc/mysql/mysql.conf.d/mysqld.cnf
-
     sudo sed -i 's/^bind-address\s*=.*/bind-address = 0.0.0.0/' /etc/mysql/mysql.conf.d/mysqld.cnf
-
     sudo systemctl restart mysql
     ```
 
@@ -88,9 +86,7 @@ Host test-ec2
 
     ```
     sudo mysql -e "CREATE USER '<User>'@'%' IDENTIFIED BY '<Password>';"
-
     sudo mysql -e "GRANT ALL PRIVILEGES ON *.* TO '<User>'@'%' WITH GRANT OPTION;"
-
     sudo mysql -e "FLUSH PRIVILEGES;"
     ```
 
