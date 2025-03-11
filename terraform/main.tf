@@ -6,14 +6,14 @@ resource "aws_security_group" "mysql_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["103.137.19.231/32"]
+    cidr_blocks = ["<IP>/32"]
   }
 
   ingress {
     from_port   = 3307
     to_port     = 3307
     protocol    = "tcp"
-    cidr_blocks = ["103.137.19.231/32"]
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   # Egress rule to allow all outbound traffic
