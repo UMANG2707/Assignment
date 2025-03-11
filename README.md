@@ -74,21 +74,18 @@ Host test-ec2
 
 ✅ Initially, MySQL runs on the default port 3306. To enhance security and avoid conflicts, we change the port to 3307. This configuration is automated through the user data script.
 
-    ```
     sudo sed -i 's/^#\s*port\s*=.*/port = 3307/' /etc/mysql/mysql.conf.d/mysqld.cnf
     sudo sed -i 's/^bind-address\s*=.*/bind-address = 0.0.0.0/' /etc/mysql/mysql.conf.d/mysqld.cnf
     sudo systemctl restart mysql
-    ```
+    
 
 ## Step-5: Create a new admin account in MySQL.
 
 ✅ A new admin user is created in MySQL as part of the user data script. Initially, this was set up manually, but it has been automated for consistency and efficiency.
 
-    ```
     sudo mysql -e "CREATE USER '<User>'@'%' IDENTIFIED BY '<Password>';"
     sudo mysql -e "GRANT ALL PRIVILEGES ON *.* TO '<User>'@'%' WITH GRANT OPTION;"
     sudo mysql -e "FLUSH PRIVILEGES;"
-    ```
 
 ## Step-6: Setup Employees Sample Database
 
