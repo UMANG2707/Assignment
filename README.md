@@ -44,6 +44,16 @@ terraform/
 
 ✅ Ensure your IP is correctly set in main.tf before applying Terraform.
 
+✅ For accessing it add belo config under ssh config to access you instance from your local machine
+
+```
+Host test-ec2
+    HostName <IP>
+    User ubuntu
+    IdentityFile ~/.ssh/<key-name>.pem
+    IdentitiesOnly yes
+```
+
 ## Step-3: Install MySQL on the EC2 instance.
 
 ✅We have two ways to install MySQL on the instance:
