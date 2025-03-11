@@ -17,23 +17,20 @@ This repository contains infrastructure and scripts for managing MySQL databases
 │ ├── variables.tf # Terraform variables definition
 ```
 
-h2 Step-1: Spin up a Micro Instance in a choice of your cloud provider.
+## Step-1: Spin up a Micro Instance in a choice of your cloud provider.
 
 The EC2 instance is provisioned using Infrastructure as Code (IaC) with Terraform. The required configuration files are stored in the terraform directory.
 
 Terraform Directory Structure
 
+```
 terraform/
-│── .terraform/                 # Terraform state directory
-│── .terraform.lock.hcl         # Terraform state lock file
 │── main.tf                     # Defines EC2 instance and resources
 │── providers.tf                 # Configures the cloud provider
 │── variables.tf                 # Stores configurable parameters
-│── terraform.tfstate            # Terraform state file
-│── terraform.tfstate.backup     # Backup of Terraform state
 │── terraform.tfvars             # Variable values for customization
 │── install_mysql.sh             # User data script for MySQL setup
-
+```
 Automated Setup
 
 The EC2 instance is created using Terraform.
