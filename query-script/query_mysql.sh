@@ -13,7 +13,7 @@ MYSQL_PASS=$(echo "$SECRET_JSON" | jq -r '.password')
 MYSQL_DB=$(echo "$SECRET_JSON" | jq -r '.dbname')
 
 # Query to execute
-QUERY="SELECT * FROM employees LIMIT 2;"
+QUERY="SELECT * FROM employees LIMIT 20;"
 
 # Connect and Execute the query
 mysql -h "$MYSQL_HOST" -P "$MYSQL_PORT" -u "$MYSQL_USER" -p"$MYSQL_PASS" -D "$MYSQL_DB" -e "$QUERY"
